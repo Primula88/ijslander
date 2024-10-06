@@ -1,17 +1,31 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import MapsWithExplanations from './components/MapsWithExplanations'; // For both summer and winter maps
-import ReviewGallery from './components/ReviewGallery'; // Updated to use the new review gallery
+import MapsWithExplanations from './components/MapsWithExplanations';
+import ReviewGallery from './components/ReviewGallery';
+import FotoCarousel from './components/FotoCarousel'; // Import FotoCarousel
 import Impressions from './components/Impressions';
 
 const App = () => {
   return (
-    <div>
-      <Header /> {/* The welcoming header with the banner */}
-      <MapsWithExplanations /> {/* Section with maps and explanations for summer and winter locations */}
-      <ReviewGallery /> {/* Updated to the new review gallery with sliding functionality */}
-      <Impressions />
-    </div>
+    <Router>
+      <Routes>
+        {/* Main route with the header and other sections */}
+        <Route
+          path="/"
+          element={
+            <>
+              <Header />
+              <MapsWithExplanations />
+              <ReviewGallery />
+              <Impressions />
+            </>
+          }
+        />
+        {/* Add the route for FotoCarousel */}
+        <Route path="/fotos" element={<FotoCarousel />} />
+      </Routes>
+    </Router>
   );
 };
 

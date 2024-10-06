@@ -1,9 +1,10 @@
-// src/components/Header.js
 import React from 'react';
 import { styled } from 'styled-components';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import bgImage from '../assets/bg.webp';
 import strandritBg from '../assets/strandrit.webp';
 import airbnbBg from '../assets/airbnb.webp';
+import fotoBg from '../assets/ijslander-4.webp';
 
 // Wrapper for the header with a static background
 const HeaderWrapper = styled.div`
@@ -18,7 +19,7 @@ const HeaderWrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto; /* Enable scrolling on mobile */
   z-index: 0;
   margin: 0; /* Remove any margins */
   padding: 0;
@@ -32,6 +33,11 @@ const HeaderWrapper = styled.div`
     bottom: 0;
     background: rgba(0, 0, 0, 0.4); /* Slight dark overlay for readability */
     z-index: 1; /* Overlay is above background */
+  }
+
+  @media (max-width: 768px) {
+    height: auto; /* Allow height to adjust based on content */
+    overflow-y: auto; /* Ensure scrolling if content overflows */
   }
 `;
 
@@ -129,8 +135,10 @@ const ButtonContainer = styled.div`
 `;
 
 const Header = () => {
+  const navigate = useNavigate(); // Use the useNavigate hook for navigation
+
   const handleClick = (url) => {
-    window.open(url, '_blank'); // Open the link in a new tab
+    window.open(url, '_blank'); // Open external links in a new tab
   };
 
   return (
@@ -155,6 +163,13 @@ const Header = () => {
           onClick={() => handleClick('https://www.airbnb.nl/rooms/18662460')}
         >
           <span>AirBNB</span>
+        </ButtonCard>
+        {/* Add the new Foto's button that navigates to the FotoCarousel page */}
+        <ButtonCard
+          background={fotoBg} // You can add a relevant background for the photos
+          onClick={() => navigate('/fotos')}
+        >
+          <span>Foto's</span>
         </ButtonCard>
       </ButtonContainer>
     </HeaderWrapper>
