@@ -7,18 +7,22 @@ import airbnbBg from '../assets/airbnb.webp';
 
 // Wrapper for the header with a static background
 const HeaderWrapper = styled.div`
-  height: 100vh;
+  height: 100vh; /* Full screen height */
+  width: 100vw;  /* Full screen width */
   background-image: url(${bgImage});
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   overflow: hidden;
-  z-index: 0; /* Background stays behind */
-  
+  z-index: 0;
+  margin: 0; /* Remove any margins */
+  padding: 0;
+
   &::before {
     content: '';
     position: absolute;
@@ -26,7 +30,7 @@ const HeaderWrapper = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4); // Slight dark overlay for readability
+    background: rgba(0, 0, 0, 0.4); /* Slight dark overlay for readability */
     z-index: 1; /* Overlay is above background */
   }
 `;
@@ -34,7 +38,7 @@ const HeaderWrapper = styled.div`
 // Text container with more transparency and higher z-index
 const TextContainer = styled.div`
   z-index: 2; /* Ensures this is on top */
-  background: rgba(255, 255, 255, 0.2);  // More transparency
+  background: rgba(255, 255, 255, 0.2);  /* More transparency */
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -67,7 +71,7 @@ const TextContainer = styled.div`
 
 // Card-styled button, using onClick for navigation, ensuring higher z-index for clickability
 const ButtonCard = styled.button`
-  background-image: url(${(props) => props.background});  // Correct use of styled-components prop
+  background-image: url(${(props) => props.background});
   background-size: cover;
   background-position: center;
   height: 150px;
@@ -77,12 +81,12 @@ const ButtonCard = styled.button`
   margin: 10px;
   overflow: hidden;
   display: flex;
-  align-items: flex-end;  // Align text to the bottom
+  align-items: flex-end;
   justify-content: center;
-  text-decoration: none;  // Removes underline for link text
+  text-decoration: none;
   cursor: pointer;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  border: none;  // Removes default button styles
+  border: none;
   color: white;
   z-index: 3; /* Ensures button is on top */
 
@@ -111,6 +115,19 @@ const ButtonCard = styled.button`
   }
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  z-index: 3;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
 const Header = () => {
   const handleClick = (url) => {
     window.open(url, '_blank'); // Open the link in a new tab
@@ -126,8 +143,7 @@ const Header = () => {
           rit door de Zeeuwsche akkers, bos, duinen en strand.
         </p>
       </TextContainer>
-      {/* Ensuring buttons are in front */}
-      <div className="flex justify-center space-x-4 mt-6 z-3">
+      <ButtonContainer>
         <ButtonCard
           background={strandritBg}
           onClick={() => handleClick('https://www.deijslander.nl/strandrit-boeken/')}
@@ -140,7 +156,7 @@ const Header = () => {
         >
           <span>AirBNB</span>
         </ButtonCard>
-      </div>
+      </ButtonContainer>
     </HeaderWrapper>
   );
 };

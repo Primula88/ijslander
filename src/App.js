@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div>
       <Header />
-      <MapsWithExplanations />    
+      <MapsWithExplanations /> 
       <ReviewComponent />
       <AboutSection />
       <RideInfoSection />

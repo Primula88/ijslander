@@ -11,6 +11,21 @@ const GridContainer = styled.div`
   border-radius: 15px;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
   margin-bottom: 20px;
+  width: 100%;  // Ensure full width
+  box-sizing: border-box;  // Include padding in the element’s width/height
+  min-width: 0;  // Allows content to shrink as needed
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;  // Stack divs vertically on mobile
+    width: 100% !important;  // Full width on mobile
+    margin: 0 auto !important;  // Center the container
+    padding: 20px;
+    overflow-x: hidden;  // Prevent horizontal overflow
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;  // Further reduce padding on very small screens
+  }
 `;
 
 // Styled text container for explanation
@@ -27,6 +42,7 @@ const TextContainer = styled.div`
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;  // Prevent long text from overflowing the container
 `;
 
 const Heading = styled.h1`
@@ -54,6 +70,12 @@ const IframeContainer = styled.div`
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  overflow: hidden;
+
+  iframe {
+    max-width: 100%;  // Ensure the iframe doesn't overflow
+    height: auto;
+  }
 `;
 
 const MapsWithExplanations = () => {
@@ -72,6 +94,7 @@ const MapsWithExplanations = () => {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              title="Breeweg 2 - Zomer Locatie"  // Added title for accessibility
             ></iframe>
           </IframeContainer>
           <TextContainer>
@@ -96,6 +119,7 @@ const MapsWithExplanations = () => {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              title="Koudekerkseweg 12 - Winter Locatie"  // Added title for accessibility
             ></iframe>
           </IframeContainer>
           <TextContainer>
