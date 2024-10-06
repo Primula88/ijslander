@@ -64,6 +64,80 @@ import ijslander59 from '../assets/fotos/ijslander-59.jpg';
 import ijslander60 from '../assets/fotos/ijslander-60.jpg';
 import ijslander61 from '../assets/fotos/ijslander-61.jpg';
 
+// Importing all thumbnails from the thumbnails folder
+import thumb1 from '../assets/fotos/thumbnails/ijslander-1.jpg';
+import thumb2 from '../assets/fotos/thumbnails/ijslander-2.jpg';
+import thumb3 from '../assets/fotos/thumbnails/ijslander-3.jpg';
+import thumb4 from '../assets/fotos/thumbnails/ijslander-4.jpg';
+import thumb5 from '../assets/fotos/thumbnails/ijslander-5.jpg';
+import thumb6 from '../assets/fotos/thumbnails/ijslander-6.jpg';
+import thumb7 from '../assets/fotos/thumbnails/ijslander-7.jpg';
+import thumb8 from '../assets/fotos/thumbnails/ijslander-8.jpg';
+import thumb9 from '../assets/fotos/thumbnails/ijslander-9.jpg';
+import thumb10 from '../assets/fotos/thumbnails/ijslander-10.jpg';
+import thumb11 from '../assets/fotos/thumbnails/ijslander-11.jpg';
+import thumb12 from '../assets/fotos/thumbnails/ijslander-12.jpg';
+import thumb13 from '../assets/fotos/thumbnails/ijslander-13.jpg';
+import thumb14 from '../assets/fotos/thumbnails/ijslander-14.jpg';
+import thumb15 from '../assets/fotos/thumbnails/ijslander-15.jpg';
+import thumb16 from '../assets/fotos/thumbnails/ijslander-16.jpg';
+import thumb17 from '../assets/fotos/thumbnails/ijslander-17.jpg';
+import thumb18 from '../assets/fotos/thumbnails/ijslander-18.jpg';
+import thumb19 from '../assets/fotos/thumbnails/ijslander-19.jpg';
+import thumb20 from '../assets/fotos/thumbnails/ijslander-20.jpg';
+import thumb21 from '../assets/fotos/thumbnails/ijslander-21.jpg';
+import thumb22 from '../assets/fotos/thumbnails/ijslander-22.jpg';
+import thumb23 from '../assets/fotos/thumbnails/ijslander-23.jpg';
+import thumb24 from '../assets/fotos/thumbnails/ijslander-24.jpg';
+import thumb25 from '../assets/fotos/thumbnails/ijslander-25.jpg';
+import thumb26 from '../assets/fotos/thumbnails/ijslander-26.jpg';
+import thumb27 from '../assets/fotos/thumbnails/ijslander-27.jpg';
+import thumb28 from '../assets/fotos/thumbnails/ijslander-28.jpg';
+import thumb29 from '../assets/fotos/thumbnails/ijslander-29.jpg';
+import thumb30 from '../assets/fotos/thumbnails/ijslander-30.jpg';
+import thumb31 from '../assets/fotos/thumbnails/ijslander-31.jpg';
+import thumb32 from '../assets/fotos/thumbnails/ijslander-32.jpg';
+import thumb33 from '../assets/fotos/thumbnails/ijslander-33.jpg';
+import thumb34 from '../assets/fotos/thumbnails/ijslander-34.jpg';
+import thumb35 from '../assets/fotos/thumbnails/ijslander-35.jpg';
+import thumb36 from '../assets/fotos/thumbnails/ijslander-36.jpg';
+import thumb37 from '../assets/fotos/thumbnails/ijslander-37.jpg';
+import thumb38 from '../assets/fotos/thumbnails/ijslander-38.jpg';
+import thumb39 from '../assets/fotos/thumbnails/ijslander-39.jpg';
+import thumb40 from '../assets/fotos/thumbnails/ijslander-40.jpg';
+import thumb41 from '../assets/fotos/thumbnails/ijslander-41.jpg';
+import thumb42 from '../assets/fotos/thumbnails/ijslander-42.jpg';
+import thumb43 from '../assets/fotos/thumbnails/ijslander-43.jpg';
+import thumb44 from '../assets/fotos/thumbnails/ijslander-44.jpg';
+import thumb45 from '../assets/fotos/thumbnails/ijslander-45.jpg';
+import thumb46 from '../assets/fotos/thumbnails/ijslander-46.jpg';
+import thumb47 from '../assets/fotos/thumbnails/ijslander-47.jpg';
+import thumb48 from '../assets/fotos/thumbnails/ijslander-48.jpg';
+import thumb49 from '../assets/fotos/thumbnails/ijslander-49.jpg';
+import thumb50 from '../assets/fotos/thumbnails/ijslander-50.jpg';
+import thumb51 from '../assets/fotos/thumbnails/ijslander-51.jpg';
+import thumb52 from '../assets/fotos/thumbnails/ijslander-52.jpg';
+import thumb53 from '../assets/fotos/thumbnails/ijslander-53.jpg';
+import thumb54 from '../assets/fotos/thumbnails/ijslander-54.jpg';
+import thumb55 from '../assets/fotos/thumbnails/ijslander-55.jpg';
+import thumb56 from '../assets/fotos/thumbnails/ijslander-56.jpg';
+import thumb57 from '../assets/fotos/thumbnails/ijslander-57.jpg';
+import thumb58 from '../assets/fotos/thumbnails/ijslander-58.jpg';
+import thumb59 from '../assets/fotos/thumbnails/ijslander-59.jpg';
+import thumb60 from '../assets/fotos/thumbnails/ijslander-60.jpg';
+import thumb61 from '../assets/fotos/thumbnails/ijslander-61.jpg';
+
+// Thumbnails array
+const thumbnails = [
+  thumb1, thumb2, thumb3, thumb4, thumb5, thumb6, thumb7, thumb8, thumb9, thumb10,
+  thumb11, thumb12, thumb13, thumb14, thumb15, thumb16, thumb17, thumb18, thumb19, thumb20,
+  thumb21, thumb22, thumb23, thumb24, thumb25, thumb26, thumb27, thumb28, thumb29, thumb30,
+  thumb31, thumb32, thumb33, thumb34, thumb35, thumb36, thumb37, thumb38, thumb39, thumb40,
+  thumb41, thumb42, thumb43, thumb44, thumb45, thumb46, thumb47, thumb48, thumb49, thumb50,
+  thumb51, thumb52, thumb53, thumb54, thumb55, thumb56, thumb57, thumb58, thumb59, thumb60,
+  thumb61
+];
+
 // List of images
 const images = [
   ijslander1, ijslander2, ijslander3, ijslander4, ijslander5, ijslander6,
@@ -208,10 +282,10 @@ const FotoCarousel = () => {
         </MainImageContainer>
 
         <ThumbnailsContainer>
-          {images.map((img, index) => (
+          {thumbnails.map((thumb, index) => (
             <Thumbnail
               key={index}
-              src={img}
+              src={thumb}
               alt={`Thumbnail ${index + 1}`}
               onClick={() => handleThumbnailClick(index)}
               selected={currentIndex === index}

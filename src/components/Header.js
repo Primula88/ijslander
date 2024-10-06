@@ -154,7 +154,7 @@ const Header = () => {
       <ButtonContainer>
         <ButtonCard
           background={strandritBg}
-          onClick={() => handleClick('https://www.deijslander.nl/strandrit-boeken/')}
+          onClick={() => handleClick('https://boeken.deijslander.nl/')}
         >
           <span>Strandrit Boeken</span>
         </ButtonCard>
