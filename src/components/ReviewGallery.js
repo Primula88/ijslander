@@ -35,41 +35,39 @@ const reviews = [
   },
 ];
 
-// Styled container for the scrolling reviews
+// Styled container for the reviews
 const ReviewsContainer = styled.div`
-  overflow: hidden;
   width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
-// Wrapper for sliding effect of multiple reviews
-const ReviewWrapper = styled.div`
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: ${(props) => props.totalPages * 100}%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;  /* Space between cards */
 `;
 
 // Styled component for individual review cards
 const ReviewCard = styled.div`
-  flex: 0 0 33.33%; /* Show 3 reviews at a time */
-  padding: 20px;
-  box-sizing: border-box;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 10px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 const ReviewContent = styled.div`
   font-size: 1rem;
   line-height: 1.4;
+  margin-bottom: 10px;
 `;
 
 const Rating = styled.div`
@@ -82,26 +80,6 @@ const ReviewerInfo = styled.div`
   font-weight: bold;
 `;
 
-// Arrow buttons
-const ArrowButton = styled.button`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 10;
-  ${({ left }) => (left ? 'left: 0;' : 'right: 0;')};
-  border-radius: 50%;
-  font-size: 1.5rem;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-`;
-
 // Styled title with the specified font
 const Title = styled.h1`
   font-family: 'Lobster', cursive;
@@ -111,46 +89,34 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-// Main component for scrolling reviews
 const ReviewGallery = () => {
-  const [index, setIndex] = useState(0);
-  const reviewsPerPage = 3;
-  const totalPages = Math.ceil(reviews.length / reviewsPerPage); // Calculate total number of pages
+  const [expandedReview, setExpandedReview] = useState(null);
 
-  const handlePrevClick = () => {
-    setIndex((prevIndex) => (prevIndex === 0 ? totalPages - 1 : prevIndex - 1));
-  };
-
-  const handleNextClick = () => {
-    setIndex((prevIndex) => (prevIndex + 1) % totalPages);
+  // Function to toggle review view
+  const toggleReview = (index) => {
+    setExpandedReview(index === expandedReview ? null : index); // Toggle open/close
   };
 
   return (
-    <ReviewsContainer>
+    <div>
       {/* Title for the Reviews Section */}
       <Title>Reviews</Title>
 
-      {/* Left Arrow */}
-      <ArrowButton left onClick={handlePrevClick}>
-        ❮
-      </ArrowButton>
-
-      {/* Review Cards */}
-      <ReviewWrapper totalPages={totalPages} style={{ transform: `translateX(-${index * 100}%)` }}>
+      {/* Reviews Container */}
+      <ReviewsContainer>
         {reviews.map((review, i) => (
-          <ReviewCard key={i}>
-            <ReviewContent>{review.comment}</ReviewContent>
+          <ReviewCard key={i} onClick={() => toggleReview(i)}>
+            <ReviewContent>
+              {expandedReview === i
+                ? review.comment // Show full comment if expanded
+                : `${review.comment.substring(0, 30)}...`} {/* Show truncated comment */}
+            </ReviewContent>
             <ReviewerInfo>{review.name}, {review.date}</ReviewerInfo>
             <Rating>Rating: {"⭐".repeat(review.rating)}</Rating>
           </ReviewCard>
         ))}
-      </ReviewWrapper>
-
-      {/* Right Arrow */}
-      <ArrowButton onClick={handleNextClick}>
-        ❯
-      </ArrowButton>
-    </ReviewsContainer>
+      </ReviewsContainer>
+    </div>
   );
 };
 
