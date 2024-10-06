@@ -82,9 +82,9 @@ const MapsWithExplanations = () => {
   return (
     <>
       <GridContainer>
-        {/* Summer Map - Breeweg 2 */}
+        {/* Summer Map - Breeweg  */}
         <div>
-          <Heading>Zomer Ritten - Breeweg 2</Heading>
+          <Heading>Zomer Ritten - Breeweg</Heading>
           <IframeContainer>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d318002.9473458055!2d3.536313!3d51.487563!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c49774bebe95db%3A0x31197fc4e1ac1360!2sFGQP%2B2G%2C%20Koudekerke%2C%20Netherlands!5e0!3m2!1sen!2sus!4v1728206673398!5m2!1sen!2sus"
@@ -99,7 +99,7 @@ const MapsWithExplanations = () => {
           </IframeContainer>
           <TextContainer>
             <Paragraph>
-              De zomer ritten starten op <strong>Breeweg 2</strong>, slechts een blok verwijderd van de Manege De IJslander. De ritten brengen u door dezelfde prachtige omgeving zoals altijd, langs bossen, velden en stranden.
+              De zomer ritten starten op <strong>Breeweg</strong>, slechts een blok verwijderd van de Manege De IJslander. De ritten brengen u door dezelfde prachtige omgeving zoals altijd, langs bossen, velden en stranden.
             </Paragraph>
             <Paragraph>
               Het enige verschil is de startlocatie, aangezien onze paarden in de zomer buiten staan. Dit biedt u een geweldige ritervaring in de Zeeuwse natuur.
